@@ -1,0 +1,62 @@
+.navBar {
+    background-color: #00171F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 300px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 9000;
+    padding: 10px 50px;
+    box-sizing: border-box;
+}
+
+.link {
+    width: 100px;
+    height: 30px;
+}
+
+.searchBar {
+    padding: 8px;
+    width: 840px;
+    outline: none;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 35%;
+    right: 32%;
+}
+
+.searchButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.essentialsDiv {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.essentialsDiv p {
+    margin: 0;
+}
+
+.essentialsDiv a {
+    color: #FFFFFF;
+    cursor: pointer;
+    background-color: #007EA7;
+    border: 2px solid #003459;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.essentialsDiv a:hover {
+    background-color: #00A8E8;
+}
