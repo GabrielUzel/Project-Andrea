@@ -11,7 +11,8 @@ export default function SearchBar() {
         event.preventDefault();
 
         if(query.trim()) {
-            window.location.href = `/search?result=${encodeURIComponent(query)}`;
+            fetch(`http://localhost:3001/search/${encodeURIComponent(query)}`)
+                .then(response => response.json());
         }
     }
 
