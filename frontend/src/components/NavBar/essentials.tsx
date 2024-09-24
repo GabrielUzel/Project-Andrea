@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './navBarStyle.module.css';
+import styles from '../styles/navBarStyle.module.css';
+import Link from 'next/link';
 
 export default function Essentials() {
     return (
         <div className={styles.essentialsDiv}>
-            <a href='/login'>Fazer login</a>
-            <a href='/signup'>Cadastre-se</a>
+            <Link href='/login'>Fazer login</Link>
+            <Link href='/signup'>Cadastre-se</Link>
         </div>
     );
 }

@@ -1,0 +1,15 @@
+.buttonTemplate {
+    background-color: #007EA7;
+    border-radius: 10px;
+    width: 255px;
+    height: 80px;
+    font-size: 32px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+
+.buttonTemplate:hover {
+    background-color: #00A8E8;
+    border: solid 2px #007EA7;
+}

@@ -10,9 +10,7 @@ router.get('/search/:result?', (request, response) => {
 });
 
 router.post('/login', Passport.authenticate('local'), (request, response) => { 
-    response.json({
-        success:true,
-    });
+    return response.sendStatus(200);
 });
 
 export default router;
