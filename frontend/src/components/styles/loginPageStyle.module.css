@@ -1,6 +1,7 @@
 .main {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    height: 100vh;
 }
 
 .flex {
@@ -15,6 +16,7 @@
 }
 
 .loginForm {
+    margin: 0 50px;
     gap: 85px;
 }
 
@@ -61,4 +63,13 @@
     border: none;
     padding-left: 10px;
     outline: none;
+}
+
+.image-container {
+    margin-top: 14px;
+}
+
+.backgroundImage {
+    width: 1205px;
+    height: 100%;
 }

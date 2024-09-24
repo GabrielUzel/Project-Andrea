@@ -44,16 +44,12 @@
     gap: 20px;
 }
 
-.essentialsDiv p {
-    margin: 0;
-}
-
 .essentialsDiv a {
     color: #FFFFFF;
     cursor: pointer;
     background-color: #007EA7;
     border: 2px solid #003459;
-    padding: 10px;
+    padding: 9px;
     text-decoration: none;
 }
 
