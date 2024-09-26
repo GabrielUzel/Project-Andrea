@@ -1,0 +1,11 @@
+html, body {
+    height: 100vh;
+}
+
+main {
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 64px;
+}

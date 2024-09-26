@@ -4,3 +4,11 @@ node_modules
 /build
 .env*.local
 .env
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.vscode/
+application.properties
