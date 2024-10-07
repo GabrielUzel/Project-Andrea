@@ -1,5 +1,6 @@
 package br.com.andrea.projectAndrea.services;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import br.com.andrea.projectAndrea.models.User;
 import br.com.andrea.projectAndrea.repository.UserRepository;
@@ -27,8 +28,8 @@ public class UserService {
     }
 
     @Transactional
-    public User findByEmail(String email) {
-        User user = userRepository.findByEmail(email);
+    public UserDetails findByEmail(String email) {
+        UserDetails user = userRepository.findByEmail(email);
 
         if(user == null) {
             throw new Error("User not found");

@@ -6,17 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.andrea.projectAndrea.services.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class UsersController {
     @Autowired
-    private UserService UserService;
+    private UserService userService;
 
-    @GetMapping("login")
-    public ResponseEntity<Void> getlogin(@RequestParam String param) {
+    @GetMapping("/login")
+    public ResponseEntity<Void> getlogin() {
         return ResponseEntity.ok().build();
     }
 }
