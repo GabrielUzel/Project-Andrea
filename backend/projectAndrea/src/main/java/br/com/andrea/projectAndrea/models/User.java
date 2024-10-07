@@ -1,7 +1,22 @@
 package br.com.andrea.projectAndrea.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import br.com.andrea.projectAndrea.enums.UserRoles;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,11 +24,18 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private UserRoles userRole;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -30,9 +52,13 @@ public class User {
     @Lob
     private byte[] profilePicture;
 
-    public User() {
+    @CreationTimestamp
+    @Column(updatable = false, name = "created_at")
+    private Date createdAt;
 
-    }
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Date updatedAt;
 
     public User(String name, String surname, String email, String password, byte[] profilePicture) {
         this.name = name;
@@ -88,5 +114,19 @@ public class User {
 
     public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.userRole == UserRoles.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        } 
+        
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String getUsername() {
+        return (name + " " + surname);
     }
 }

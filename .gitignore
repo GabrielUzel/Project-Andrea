@@ -11,4 +11,4 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .vscode/
-application.properties
+application.yml
