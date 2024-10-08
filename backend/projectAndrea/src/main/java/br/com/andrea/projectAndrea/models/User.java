@@ -43,12 +43,13 @@ public class User implements UserDetails {
     private String surname;
     private String profilePicturePath;
 
-    public User(String name, String surname, String email, String password, String profilePicturePath) {
+    public User(String name, String surname, String email, String password, String profilePicturePath, UserRole role) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.profilePicturePath = profilePicturePath;
+        this.role = role;
     }
 
     @Override
