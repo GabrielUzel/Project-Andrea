@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Button from '../button';
-import styles from '../styles/loginPageStyle.module.css';
+import styles from '../../styles/loginPageStyle.module.css';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ export default function LoginForm() {
         event.preventDefault();
 
         if(email.trim() && password.trim()) {
-            fetch(`http://localhost:3001/login`, {
+            fetch(`http://localhost:8080/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

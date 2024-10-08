@@ -1,9 +1,9 @@
 .buttonTemplate {
     background-color: #007EA7;
-    border-radius: 10px;
-    width: 146px;
-    height: 51px;
-    font-size: 20px;
+    border-radius: 0.625rem;
+    width: 9.063rem;
+    height: 3.125rem;
+    font-size: 1.25rem;
     color: #FFFFFF;
     cursor: pointer;
     border: none;
@@ -11,5 +11,5 @@
 
 .buttonTemplate:hover {
     background-color: #00A8E8;
-    border: solid 2px #007EA7;
+    border: solid 0.125rem #007EA7;
 }

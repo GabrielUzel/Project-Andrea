@@ -3,7 +3,7 @@ import Image from 'next/image';
 import NavBar from '../../components/NavBar/navBar';
 import LoginForm from '../../components/Login/loginForm';
 import Link from 'next/link';
-import styles from '../../components/styles/loginPageStyle.module.css'
+import styles from '../../styles/loginPageStyle.module.css';
 
 export default function Login() {
     return (
