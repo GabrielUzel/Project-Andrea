@@ -1,92 +1,89 @@
 package br.com.andrea.projectAndrea.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import br.com.andrea.projectAndrea.enums.UserRole;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
+    @CreationTimestamp
+    private Date createdAt;
+    
+    @UpdateTimestamp
+    private Date updatedAt;
+
     private String email;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String surname;
+    private String profilePicturePath;
 
-    @Lob
-    private byte[] profilePicture;
-
-    public User() {
-
-    }
-
-    public User(String name, String surname, String email, String password, byte[] profilePicture) {
+    public User(String name, String surname, String email, String password, String profilePicturePath, UserRole role) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.profilePicture = profilePicture;
+        this.profilePicturePath = profilePicturePath;
+        this.role = role;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UserRole.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        } 
+        
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
+    // Todo: research about these methods
+    @Override
+    public String getUsername() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public byte[] getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
