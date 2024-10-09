@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.andrea.projectAndrea.models.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
     UserDetails findByEmail(String email);
 }

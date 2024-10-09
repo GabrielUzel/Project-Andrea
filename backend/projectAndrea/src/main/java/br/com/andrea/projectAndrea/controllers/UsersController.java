@@ -14,6 +14,7 @@ import br.com.andrea.projectAndrea.auth.TokenService;
 import br.com.andrea.projectAndrea.dtos.LoginDTO;
 import br.com.andrea.projectAndrea.dtos.LoginResponseDTO;
 import br.com.andrea.projectAndrea.dtos.RegisterDTO;
+import br.com.andrea.projectAndrea.enums.UserRole;
 import br.com.andrea.projectAndrea.models.User;
 import br.com.andrea.projectAndrea.repository.UserRepository;
 
@@ -46,7 +47,7 @@ public class UsersController {
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-        User newUser = new User(data.name(), data.surname(), data.email(), encryptedPassword, data.profilePicturePath(), data.role());
+        User newUser = new User(data.name(), data.surname(), data.email(), encryptedPassword, data.profilePicturePath(), UserRole.ADMIN);
 
         this.userRepository.save(newUser);
         return ResponseEntity.ok().build();
