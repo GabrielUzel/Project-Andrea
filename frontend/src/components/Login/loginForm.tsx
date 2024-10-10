@@ -22,13 +22,7 @@ export default function LoginForm() {
                     password: password
                 })
             }).then(response => {
-                if(response.status === 401) {
-                    console.log();
-                }
 
-                if(response.status === 200) {
-                    console.log();
-                }
             })
         }
     }
