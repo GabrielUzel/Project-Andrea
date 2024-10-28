@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../../components/NavBar/navBar';
 
-export default function MyCourses() {
+export default function Settings() {
     return (
         <>
             <NavBar />
