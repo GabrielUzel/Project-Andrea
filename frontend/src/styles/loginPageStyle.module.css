@@ -1,0 +1,75 @@
+.main {
+    display: flex;
+    justify-content: flex-end;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.borderRadius10 {
+    border-radius: 0.625rem;
+}
+
+.loginForm {
+    margin: 0 3.125rem;
+    gap: 5.313rem;
+}
+
+.loginTitle {
+    gap: 5rem;
+}
+
+.loginMainFrame, .loginEssentials {
+    gap: 2.5rem;
+}
+
+.loginExtraLinks {
+    gap: 0.625rem;
+}
+
+.link {
+    color: #000000;
+}
+
+.googleLogo {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.313rem;
+    background-color: #D9D9D9;
+    padding: 0.625rem;
+    text-decoration: none;
+    color: #000000;
+}
+
+
+.loginFormDiv {
+    gap: 6.25rem;
+}
+
+.loginTexts {
+    gap: 1.875rem;
+}
+
+.loginTextInputs {
+    width: 35.938rem;
+    height: 2.5rem;
+    background-color: #D9D9D9;
+    border: none;
+    padding-left: 0.625rem;
+    outline: none;
+}
+
+.image-container {
+    margin-top: 0.875rem;
+}
+
+.backgroundImage {
+    width: 75.313rem;
+    height: 100%;
+}

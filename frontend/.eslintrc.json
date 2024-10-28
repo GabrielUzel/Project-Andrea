@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "next",
+        "next/babel",
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "react/prop-types": "off"
+    }
+}
