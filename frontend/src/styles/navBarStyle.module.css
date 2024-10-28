@@ -84,8 +84,21 @@
     gap: 0.625rem;
 }
 
-.menuLink:hover {
+.menuLink:hover, .logoutButton:hover {
     background-color: #003459;
+}
+
+.logoutButton {
+    border: none;
+    color: #FFFFFF;
+    background-color: #00171F;
+    cursor: pointer;
+    padding: 1.25rem 3.625rem 1.25rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 1rem;
+    font-family: inherit;
 }
 
 @media (max-width: 1000px) {

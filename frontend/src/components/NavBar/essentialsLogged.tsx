@@ -12,6 +12,11 @@ export default function EssentialsNotLogged() {
         setMenuIsOpen(!menuIsOpen);
     }
 
+    const logoutUser = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
+
     return (
         <div className={styles.essentialsDiv}>
             <Link className={styles.essentialsLink} href='/mycourses'>Meus cursos</Link>
@@ -57,7 +62,7 @@ export default function EssentialsNotLogged() {
                     />
                     Carrinho
                 </Link>
-                <Link className={styles.menuLink} href='/'>
+                <button className={styles.logoutButton} onClick={logoutUser}>
                     <Image
                         src="/img/logout-icon.svg"
                         width={20}
@@ -66,7 +71,7 @@ export default function EssentialsNotLogged() {
                         alt="logout image"
                     />
                     Sair
-                </Link>
+                </button>
                 <Link className={styles.menuLink} href='/support'>
                     <Image
                         src="/img/support-icon.svg"
