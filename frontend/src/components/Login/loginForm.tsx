@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import Button from '../button';
 import styles from '../../styles/loginPageStyle.module.css';
@@ -7,6 +8,8 @@ import styles from '../../styles/loginPageStyle.module.css';
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const router = useRouter();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,19 +24,37 @@ export default function LoginForm() {
                     email: email,
                     password: password
                 })
-            }).then(response => {
-
+            }).then(response => response.json()
+            ).then(data => {
+                if(data.token) {
+                    localStorage.setItem('token', data.token);
+                    router.push('/');
+                }
             })
+            .catch(error => {
+                setErrorMessage("Email ou senha inválidos");
+            });
         }
     }
 
     return (
-        <form className={`${styles.loginFormDiv} ${styles.flex}`} onSubmit={handleSubmit}>
-            <div className={`${styles.loginTexts} ${styles.flex}`}>
-                <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="text" placeholder='Email' value={email} onChange={ (event) => setEmail(event.target.value) } />
-                <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="password" placeholder='Senha' value={password} onChange={ (event) => setPassword(event.target.value) }/>
-            </div>
-            <Button label='Login'/>
-        </form>
+        <div className={styles.loginFormMainDiv}>
+            {errorMessage && (
+                <div className={styles.errorMessage}>
+                    <p>
+                        {errorMessage}
+                    </p>
+                </div>
+            )}
+
+            <form className={`${styles.loginFormDiv} ${styles.flex}`} onSubmit={handleSubmit}>
+                <div className={`${styles.loginTexts} ${styles.flex}`}>
+                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="text" placeholder='Email' value={email} onChange={ (event) => setEmail(event.target.value) } />
+                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="password" placeholder='Senha' value={password} onChange={ (event) => setPassword(event.target.value) }/>
+                </div>
+                <Button label='Login'/>
+            </form>
+        </div>
+
     );
 }

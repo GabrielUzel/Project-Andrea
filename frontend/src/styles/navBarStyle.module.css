@@ -61,6 +61,33 @@
     background-color: #00A8E8;
 }
 
+.profileImage {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menuDiv {
+    position: absolute;
+    top: 4.5rem;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #00171F;
+    z-index: 9000;
+}
+
+.menuLink {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 1.25rem 3.625rem 1.25rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.menuLink:hover {
+    background-color: #003459;
+}
+
 @media (max-width: 1000px) {
     .logoLink {
         display: none;

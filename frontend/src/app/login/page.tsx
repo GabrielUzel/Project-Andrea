@@ -40,8 +40,8 @@ export default function Login() {
                 <div className={styles.imageContainer}>
                     <Image
                         src="/img/template.jpeg"
-                        width={50}
-                        height={50}
+                        width={500}
+                        height={500}
                         alt="Logo image"
                         className={styles.backgroundImage}
                     />

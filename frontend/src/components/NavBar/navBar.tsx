@@ -1,12 +1,22 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './searchBar';
-import Essentials from './essentials';
 import BurguerMenu from './burguerMenu';
 import styles from '../../styles/navBarStyle.module.css';
+import EssentialsNotLogged from './essentialsNotLogged';
+import EssentialsLogged from './essentialsLogged';
 
 export default function NavBar() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
+
     return (
         <nav className={styles.navBar}>
             <Link className={styles.logoLink} href='/'>
@@ -19,7 +29,13 @@ export default function NavBar() {
                 />
             </Link>
             <SearchBar />
-            <Essentials />
+
+            {isLoggedIn ? (
+                <EssentialsLogged />
+            ) : (
+                <EssentialsNotLogged />
+            )}
+
             <BurguerMenu />
         </nav>
     );

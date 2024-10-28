@@ -1,6 +1,6 @@
 .main {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     height: 100vh;
 }
 
@@ -47,6 +47,17 @@
     color: #000000;
 }
 
+.errorMessage {
+    background-color: #FF6161;
+    padding: .688rem;
+    border: solid 1px #FF0000;
+}
+
+.loginFormMainDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
 
 .loginFormDiv {
     gap: 6.25rem;
@@ -65,11 +76,12 @@
     outline: none;
 }
 
-.image-container {
-    margin-top: 0.875rem;
+.imageContainer {
+    flex: 1
 }
 
 .backgroundImage {
-    width: 75.313rem;
-    height: 100%;
+    position: relative;
+    top: 25%;
+    left: 25%;
 }
