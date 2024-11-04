@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
-import Button from '../button';
+import Button from '../components/button';
 import styles from '../../styles/loginPageStyle.module.css';
 
 export default function LoginForm() {
@@ -32,25 +32,47 @@ export default function LoginForm() {
                 }
             })
             .catch(error => {
-                setErrorMessage("Email ou senha inválidos");
+                if(error instanceof TypeError) {
+                    setErrorMessage("Houve um problema, tente novamente mais tarde");
+                } else {
+                    setErrorMessage("Email ou senha inválidos");
+                }
             });
         }
     }
 
+    const removeErrorMessage = () => {
+        setErrorMessage('');
+    }
+
     return (
         <div className={styles.loginFormMainDiv}>
-            {errorMessage && (
-                <div className={styles.errorMessage}>
-                    <p>
-                        {errorMessage}
-                    </p>
-                </div>
-            )}
+            <div className={styles.errorMessage} style={{visibility: errorMessage ? 'visible' : "hidden"}}>
+                <p>
+                    {errorMessage}
+                </p>
+            </div>
 
             <form className={`${styles.loginFormDiv} ${styles.flex}`} onSubmit={handleSubmit}>
                 <div className={`${styles.loginTexts} ${styles.flex}`}>
-                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="text" placeholder='Email' value={email} onChange={ (event) => setEmail(event.target.value) } />
-                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`} type="password" placeholder='Senha' value={password} onChange={ (event) => setPassword(event.target.value) }/>
+                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
+                        type="text"
+                        placeholder='Email'
+                        value={email}
+                        onChange={ (event) => {
+                            setEmail(event.target.value);
+                            removeErrorMessage();
+                        }}
+                    />
+                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
+                        type="password"
+                        placeholder='Senha'
+                        value={password}
+                        onChange={ (event) => {
+                            setPassword(event.target.value);
+                            removeErrorMessage();
+                        }}
+                    />
                 </div>
                 <Button label='Login'/>
             </form>

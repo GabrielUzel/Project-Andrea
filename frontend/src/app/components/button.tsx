@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/buttonStyle.module.css';
+import styles from '../../styles/buttonStyle.module.css';
 
 type ButtonProps = {
     label: string;

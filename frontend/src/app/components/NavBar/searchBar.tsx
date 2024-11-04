@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../../styles/navBarStyle.module.css';
+import styles from '../../../styles/navBarStyle.module.css';
 
 export default function SearchBar() {
     const [query, setQuery] = useState('');

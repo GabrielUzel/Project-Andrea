@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import SearchBar from './searchBar';
 import BurguerMenu from './burguerMenu';
-import styles from '../../styles/navBarStyle.module.css';
+import styles from '../../../styles/navBarStyle.module.css';
 import EssentialsNotLogged from './essentialsNotLogged';
 import EssentialsLogged from './essentialsLogged';
+import TemplateImage from '../templateImage';
 
 export default function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,13 +20,7 @@ export default function NavBar() {
     return (
         <nav className={styles.navBar}>
             <Link className={styles.logoLink} href='/'>
-                <Image
-                    src="/img/template.jpeg"
-                    width={100}
-                    height={30}
-                    className="logo"
-                    alt="Logo image"
-                />
+                <TemplateImage width={100} height={30} className={"logo"}/>
             </Link>
             <SearchBar />
 

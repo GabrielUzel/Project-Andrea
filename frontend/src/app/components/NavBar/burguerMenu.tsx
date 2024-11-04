@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../../styles/burguerMenuStyle.module.css';
+import styles from '../../../styles/burguerMenuStyle.module.css';
 
 export default function BurguerMenu() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);

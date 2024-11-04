@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../../styles/navBarStyle.module.css';
+import styles from '../../../styles/navBarStyle.module.css';
 import Link from 'next/link';
 
 export default function EssentialsNotLogged() {

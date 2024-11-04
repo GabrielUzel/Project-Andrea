@@ -19,5 +19,8 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.7",
     "eslint-plugin-react": "^7.35.2"
+  },
+  "resolutions": {
+    "@types/react": "18.3.12"
   }
 }
