@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../../../styles/navBarStyle.module.css';
+import styles from '../../styles/navBarStyle.module.css';
 import Link from 'next/link';
+import ProfileImage from '../profileImage';
 
 export default function EssentialsNotLogged() {
     const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -21,14 +22,7 @@ export default function EssentialsNotLogged() {
         <div className={styles.essentialsDiv}>
             <Link className={styles.essentialsLink} href='/mycourses'>Meus cursos</Link>
             <div>
-                <Image
-                    src="/img/template.jpeg"
-                    width={40}
-                    height={40}
-                    alt="Profile image"
-                    className={styles.profileImage}
-                    onMouseEnter={toggleMenuState}
-                />
+                <ProfileImage width={40}  height={40} toggleMenuState={toggleMenuState} />
             </div>
 
             <div className={styles.menuDiv} style={{ display: menuIsOpen ? 'flex' : 'none' }} onMouseLeave={toggleMenuState}>

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
-import Button from '../components/button';
+import Button from '../../components/button';
 import styles from '../../styles/loginPageStyle.module.css';
 
 export default function LoginForm() {

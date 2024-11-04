@@ -17,11 +17,7 @@
 
 .loginForm {
     margin: 0 3.125rem;
-    gap: 5.313rem;
-}
-
-.loginTitle {
-    gap: 5rem;
+    gap: 2rem;
 }
 
 .loginMainFrame, .loginEssentials {
