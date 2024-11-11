@@ -3,8 +3,8 @@ import Image from 'next/image';
 import NavBar from '../../components/NavBar/navBar';
 import LoginForm from './loginForm';
 import Link from 'next/link';
-import styles from '../../styles/loginPageStyle.module.css';
 import TemplateImage from '../../components/templateImage';
+import styles from '../../styles/loginPageStyle.module.css';
 
 export default function Login() {
     return (

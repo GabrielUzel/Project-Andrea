@@ -3,12 +3,14 @@
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react';
 import Button from '../../components/button';
+import SeePasswordIcon from '../../components/seePasswordIcon';
 import styles from '../../styles/loginPageStyle.module.css';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [typeIsPassword, setTypeIsPassword] = useState(true);
     const router = useRouter();
 
     const handleSubmit = (event) => {
@@ -45,6 +47,10 @@ export default function LoginForm() {
         setErrorMessage('');
     }
 
+    const changeTypeIsPassword = () => {
+        setTypeIsPassword(!typeIsPassword);
+    }
+
     return (
         <div className={styles.loginFormMainDiv}>
             <div className={styles.errorMessage} style={{visibility: errorMessage ? 'visible' : "hidden"}}>
@@ -56,7 +62,7 @@ export default function LoginForm() {
             <form className={`${styles.loginFormDiv} ${styles.flex}`} onSubmit={handleSubmit}>
                 <div className={`${styles.loginTexts} ${styles.flex}`}>
                     <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
-                        type="text"
+                        type='text'
                         placeholder='Email'
                         value={email}
                         onChange={ (event) => {
@@ -64,19 +70,21 @@ export default function LoginForm() {
                             removeErrorMessage();
                         }}
                     />
-                    <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
-                        type="password"
-                        placeholder='Senha'
-                        value={password}
-                        onChange={ (event) => {
-                            setPassword(event.target.value);
-                            removeErrorMessage();
-                        }}
-                    />
+                    <div>
+                        <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
+                            type={typeIsPassword ? 'password' : 'text'}
+                            placeholder='Senha'
+                            value={password}
+                            onChange={ (event) => {
+                                setPassword(event.target.value);
+                                removeErrorMessage();
+                            }}
+                        />
+                        <SeePasswordIcon changeTypeIsPassword={changeTypeIsPassword}/>
+                    </div>
                 </div>
                 <Button label='Login'/>
             </form>
         </div>
-
     );
 }
