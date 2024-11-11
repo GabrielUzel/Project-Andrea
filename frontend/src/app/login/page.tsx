@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import NavBar from '../../components/NavBar/navBar';
-import LoginForm from '../../components/Login/loginForm';
+import LoginForm from './loginForm';
 import Link from 'next/link';
+import TemplateImage from '../../components/templateImage';
 import styles from '../../styles/loginPageStyle.module.css';
 
 export default function Login() {
@@ -11,7 +12,7 @@ export default function Login() {
             <NavBar />
             <main className={styles.main}>
                 <section className={`${styles.loginForm} ${styles.flex}`}>
-                    <div className={`${styles.loginTtile} ${styles.flex}`}>
+                    <div className={`${styles.loginTitle} ${styles.flex}`}>
                         <h1 className='title'>Login</h1>
                     </div>
                     <div className={`${styles.loginMainFrame} ${styles.flex}`}>
@@ -38,13 +39,7 @@ export default function Login() {
                     </div>
                 </section>
                 <div className={styles.imageContainer}>
-                    <Image
-                        src="/img/template.jpeg"
-                        width={50}
-                        height={50}
-                        alt="Logo image"
-                        className={styles.backgroundImage}
-                    />
+                    <TemplateImage width={500} height={500} className={styles.backgroundImage}/>
                 </div>
             </main>
         </>

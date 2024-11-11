@@ -1,25 +1,37 @@
-import React from 'react';
-import Image from 'next/image';
+'use client'
+
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import SearchBar from './searchBar';
-import Essentials from './essentials';
 import BurguerMenu from './burguerMenu';
 import styles from '../../styles/navBarStyle.module.css';
+import EssentialsNotLogged from './essentialsNotLogged';
+import EssentialsLogged from './essentialsLogged';
+import TemplateImage from '../templateImage';
 
 export default function NavBar() {
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
+
+    const renderContent = useMemo(() => {
+        if(isLoggedIn === null) {
+            return <div style={{width:'180px', height:'44px'}}></div>
+        }
+
+        return isLoggedIn ? <EssentialsLogged /> : <EssentialsNotLogged />
+    }, [isLoggedIn]);
+
     return (
         <nav className={styles.navBar}>
             <Link className={styles.logoLink} href='/'>
-                <Image
-                    src="/img/template.jpeg"
-                    width={100}
-                    height={30}
-                    className="logo"
-                    alt="Logo image"
-                />
+                <TemplateImage width={100} height={30} className={"logo"}/>
             </Link>
             <SearchBar />
-            <Essentials />
+            {renderContent}
             <BurguerMenu />
         </nav>
     );
