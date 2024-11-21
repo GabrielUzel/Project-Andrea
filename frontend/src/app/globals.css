@@ -6,10 +6,6 @@ html, body {
     height: 100vh;
 }
 
-main {
-    margin-top: 0.625rem;
-}
-
 .title {
     font-size: 4rem;
 }

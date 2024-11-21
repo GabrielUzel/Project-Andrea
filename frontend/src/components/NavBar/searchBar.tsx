@@ -18,7 +18,7 @@ export default function SearchBar() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input className={styles.searchBar} type="text" placeholder='O que deseja aprender?'value={query} onChange={ (event) => setQuery(event.target.value) } />
+            <input name='search' className={styles.searchBar} type="text" placeholder='O que deseja aprender?'value={query} onChange={ (event) => setQuery(event.target.value) } />
             <button className={styles.searchButton} type='submit'>
                 <Image
                     className={styles.searchIcon}

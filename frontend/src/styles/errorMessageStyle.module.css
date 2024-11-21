@@ -1,0 +1,6 @@
+.errorMessage {
+    min-height: 20px;
+    background-color: #FF6161;
+    padding: .688rem;
+    border: solid 1px #FF0000;
+}

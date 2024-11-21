@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Button from '../../components/button';
 import SeePasswordIcon from '../../components/seePasswordIcon';
 import styles from '../../styles/loginPageStyle.module.css';
+import ErrorMessage from '../../components/errorMessage';
 
 export default function LoginForm() {
     const [email, setEmail] = useState('');
@@ -26,8 +27,8 @@ export default function LoginForm() {
                     email: email,
                     password: password
                 })
-            }).then(response => response.json()
-            ).then(data => {
+            }).then(response => response.json())
+            .then(data => {
                 if(data.token) {
                     localStorage.setItem('token', data.token);
                     router.push('/');
@@ -53,18 +54,16 @@ export default function LoginForm() {
 
     return (
         <div className={styles.loginFormMainDiv}>
-            <div className={styles.errorMessage} style={{visibility: errorMessage ? 'visible' : "hidden"}}>
-                <p>
-                    {errorMessage}
-                </p>
-            </div>
+            <ErrorMessage errorMessage={errorMessage}/>
 
             <form className={`${styles.loginFormDiv} ${styles.flex}`} onSubmit={handleSubmit}>
                 <div className={`${styles.loginTexts} ${styles.flex}`}>
                     <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
                         type='text'
                         placeholder='Email'
+                        name='email'
                         value={email}
+                        autoComplete='on'
                         onChange={ (event) => {
                             setEmail(event.target.value);
                             removeErrorMessage();
@@ -74,6 +73,7 @@ export default function LoginForm() {
                         <input className={`${styles.loginTextInputs} ${styles.borderRadius10}`}
                             type={typeIsPassword ? 'password' : 'text'}
                             placeholder='Senha'
+                            name='password'
                             value={password}
                             onChange={ (event) => {
                                 setPassword(event.target.value);

@@ -10,7 +10,7 @@ export default function Login() {
     return (
         <>
             <NavBar />
-            <main className={styles.main}>
+            <main className={styles.login}>
                 <section className={`${styles.loginForm} ${styles.flex}`}>
                     <div className={`${styles.loginTitle} ${styles.flex}`}>
                         <h1 className='title'>Login</h1>
@@ -31,7 +31,7 @@ export default function Login() {
                             </Link>
                             <div className={`${styles.loginExtraLinks} ${styles.flex}`}>
                                 <p>
-                                    Não tem uma conta? <Link className={styles.link} href='/signup'>Cadastre-se</Link>
+                                    Não tem uma conta? <Link className={styles.link} href='/register'>Cadastre-se</Link>
                                 </p>
                                 <Link className={styles.link} href='/forgotpassword'>Esqueceu sua senha?</Link>
                             </div>

@@ -3,7 +3,7 @@ import { CldImage } from 'next-cloudinary';
 import styles from '../styles/navBarStyle.module.css';
 
 export default function ProfileImage({width, height, toggleMenuState}) {
-    const [imageSrc, setImageSrc] = useState('');
+    const [imageSrc, setImageSrc] = useState('#');
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -14,13 +14,9 @@ export default function ProfileImage({width, height, toggleMenuState}) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-        }).then(response => response.json()
-        ).then(data => {
-            if(data.path != '#') {
-                setImageSrc(data.path);
-            } else {
-                setImageSrc('https://res.cloudinary.com/dy2mdjqn4/image/upload/v1730743526/project-andrea/default-user.svg');
-            }
+        }).then(response => response.json())
+        .then(data => {
+            setImageSrc(data.path == '#' ? 'https://res.cloudinary.com/dy2mdjqn4/image/upload/v1730743526/project-andrea/default-user.svg' : data.path);
         })
         .catch(error => {
             console.log(error);
